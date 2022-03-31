@@ -1,6 +1,6 @@
 
 NAME = libft.a
-SRC = ./ft_isalpha.c
+SRC := $(shell find . -name '*.c')
 OBJ = $(SRC:.c=.o)
 CFLAGS += -Wall -Wextra -Werror
 
@@ -14,10 +14,10 @@ build: $(OBJ)
 	ar rcs $(NAME) $(OBJ)
 
 compile:
-	gcc $(CFLAGS) -c -o $(OBJ) $(SRC)
+	gcc $(CFLAGS) -c $(SRC)
 
 compile-no-flags:
-	gcc -c -o $(OBJ) $(SRC)
+	gcc -c $(SRC)
 
 clean: $(OBJ)
 	rm -f $(OBJ)
