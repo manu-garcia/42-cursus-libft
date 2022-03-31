@@ -6,7 +6,7 @@
 /*   By: manu <manu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 19:54:40 by manugarc          #+#    #+#             */
-/*   Updated: 2022/03/31 20:07:21 by manu             ###   ########.fr       */
+/*   Updated: 2022/03/31 20:21:59 by manu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 
 extern int	ft_isalpha(char c);
 extern int	ft_isdigit(char c);
+extern int	ft_isalnum(char c);
 
 #endif
