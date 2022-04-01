@@ -6,7 +6,7 @@
 /*   By: manu <manu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 19:54:40 by manugarc          #+#    #+#             */
-/*   Updated: 2022/04/01 18:40:39 by manu             ###   ########.fr       */
+/*   Updated: 2022/04/01 19:25:16 by manu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ extern	int		ft_toupper(int c);
 extern	int		ft_tolower(int c);
 extern	int		ft_strncmp(char *s1, char *s2, size_t n);
 extern	int		ft_atoi(const char *str);
+extern	void		*ft_memset(void *b, int c, size_t len);
 
 #endif
