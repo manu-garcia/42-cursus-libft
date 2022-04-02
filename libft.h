@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manugarc <manugarc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: manu <manu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 19:54:40 by manugarc          #+#    #+#             */
-/*   Updated: 2022/04/02 18:27:22 by manugarc         ###   ########.fr       */
+/*   Updated: 2022/04/02 22:18:22 by manu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,7 @@ extern	void		*ft_memchr(const void *s, int c, size_t n);
 extern	char		*ft_strdup(const char *s1);
 extern	char		*ft_strchr(const char *s, int c);
 extern	char		*ft_strrchr(const char *s, int c);
+extern	char		*ft_strnstr(const char *haystack, const char *needle,
+					size_t len);
 
 #endif
