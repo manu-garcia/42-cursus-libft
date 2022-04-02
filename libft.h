@@ -6,7 +6,7 @@
 /*   By: manugarc <manugarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 19:54:40 by manugarc          #+#    #+#             */
-/*   Updated: 2022/04/02 18:17:29 by manugarc         ###   ########.fr       */
+/*   Updated: 2022/04/02 18:27:22 by manugarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ extern	int		ft_toupper(int c);
 extern	int		ft_tolower(int c);
 extern	int		ft_strncmp(char *s1, char *s2, size_t n);
 extern	int		ft_atoi(const char *str);
+extern	int		ft_memcmp(const void *s1, const void *s2, size_t n);
 extern	void		ft_bzero(void *s, size_t n);
 extern	void		*ft_memset(void *b, int c, size_t len);
 extern	void		*ft_calloc(size_t count, size_t size);
