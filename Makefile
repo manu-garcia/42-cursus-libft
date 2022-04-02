@@ -8,7 +8,7 @@ $(NAME): $(OBJ) compile build
 
 all: $(NAME)
 
-re: fclean build
+re: fclean $(NAME)
 
 build: $(OBJ)
 	ar rcs $(NAME) $(OBJ)
