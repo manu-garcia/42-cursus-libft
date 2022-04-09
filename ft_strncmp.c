@@ -3,36 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manu <manu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: manugarc <manugarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 18:27:52 by manu              #+#    #+#             */
-/*   Updated: 2022/04/01 18:30:55 by manu             ###   ########.fr       */
+/*   Updated: 2022/04/09 15:43:17 by manugarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-int	ft_strncmp(char *s1, char *s2, size_t n)
+int	ft_strncmp(char *s1, const char *s2, size_t n)
 {
-	size_t	cont;
-	size_t	result;
+	size_t			cont;
+	unsigned char	*uchar_s1;
+	unsigned char	*uchar_s2;
 
-	if (!s1 && !s2)
-		return (0);
-	if (s1 && !s2)
-		return (-1);
-	if (!s1 && s2)
-		return (1);
-	result = 0;
+	uchar_s1 = (unsigned char *)s1;
+	uchar_s2 = (unsigned char *)s2;
 	cont = 0;
-	while (cont < n && s1[cont] && s2[cont] && result == 0)
+	while (cont < n && (s1[cont] || s2[cont]))
 	{
-		result = s1[cont] - s2[cont];
+		if (s1[cont] != s2[cont])
+			return (uchar_s1[cont] - uchar_s2[cont]);
 		cont++;
 	}
-	if (result != 0)
-		return (result);
-	if (cont == n)
-		return (0);
-	return (s1[cont] - s2[cont]);
+	return (0);
 }
