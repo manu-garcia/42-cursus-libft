@@ -3,45 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manugarc <manugarc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: manu <manu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 12:44:29 by manugarc          #+#    #+#             */
-/*   Updated: 2022/04/12 17:00:01 by manugarc         ###   ########.fr       */
+/*   Updated: 2022/04/12 19:40:00 by manu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <limits.h>
 #include "libft.h"
 
-static int	get_num_lenght(int n)
+static int	get_num_length(int n)
 {
-	int	lenght;
+	int	length;
 
-	lenght = 0;
+	length = 0;
 	if (n < 0)
 	{
-		lenght += 1;
+		length += 1;
 		n *= -1;
 	}
 	if (n == 0)
-		return (lenght + 1);
+		return (length + 1);
 	while (n > 0)
 	{
 		n /= 10;
-		lenght++;
+		length++;
 	}
-	return (lenght);
+	return (length);
 }
 
-static char	*_itoa(int n, char *str, int lenght)
+static char	*_itoa(int n, char *str, int length)
 {
 	int	i;
 
-	str[lenght] = '\0';
-	i = lenght - 1;
+	str[length] = '\0';
+	i = length - 1;
 	while (i >= 0)
 	{
-		str[i] = n + '0';
+		str[i] = n % 10 + '0';
+		n /= 10;
 		i--;
 	}
 	return (str);
@@ -49,19 +51,20 @@ static char	*_itoa(int n, char *str, int lenght)
 
 char	*ft_itoa(int n)
 {
-	int		lenght;
-	int		mod;
+	int		length;
 	char	*str;
 
-	lenght = get_num_lenght(n);
-	str = (char *) malloc(lenght + 1);
+	if (n == INT_MIN)
+		return (ft_strdup("-2147483648"));
+	length = get_num_length(n);
+	str = (char *) malloc(length + 1);
 	if (n < 0)
 	{
 		str[0] = '-';
 		n *= -1;
-		_itoa(n, str + 1, lenght - 1);
+		_itoa(n, str + 1, length - 1);
 	}
 	else
-		_itoa(n, str, lenght);
+		_itoa(n, str, length);
 	return (str);
 }
