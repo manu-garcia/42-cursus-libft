@@ -6,7 +6,7 @@
 /*   By: manu <manu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 19:54:40 by manugarc          #+#    #+#             */
-/*   Updated: 2022/04/13 18:28:09 by manu             ###   ########.fr       */
+/*   Updated: 2022/04/13 18:34:44 by manu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ char			*ft_itoa(int n);
 
 t_list			*ft_lstnew(void *content);
 void			ft_lstadd_front(t_list **lst, t_list *new);
+int				ft_lstsize(t_list *lst);
 
 #endif
