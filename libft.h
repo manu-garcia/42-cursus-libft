@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manugarc <manugarc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: manu <manu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 19:54:40 by manugarc          #+#    #+#             */
-/*   Updated: 2022/04/12 16:20:26 by manugarc         ###   ########.fr       */
+/*   Updated: 2022/04/13 18:03:55 by manu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define LIBFT_H
 
 # include <stddef.h>
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
 
 extern	int		ft_isalpha(int c);
 extern	int		ft_isdigit(int c);
@@ -51,5 +57,7 @@ void			ft_putendl_fd(char *s, int fd);
 void			ft_striteri(char *s, void (*f)(unsigned int, char*));
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char			*ft_itoa(int n);
+
+t_list			*ft_lstnew(void *content);
 
 #endif
