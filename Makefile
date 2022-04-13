@@ -1,26 +1,34 @@
 
 NAME = libft.a
-SRC := $(shell find . -name '*.c')
-OBJ = $(SRC:.c=.o)
-CFLAGS += -Wall -Wextra -Werror
 
-$(NAME): $(OBJ) compile build
+MANDATORY_SRC := $(shell find . \( -name '*.c' -a -not -name '*bonus.c' \))
+MANDATORY_OBJ = $(MANDATORY_SRC:.c=.o)
+
+ALL_SRC := $(shell find . \( -name '*.c' \))
+ALL_OBJ = $(ALL_SRC:.c=.o)
+
+CFLAGS = -Wall -Wextra -Werror
+
+$(NAME): $(MANDATORY_OBJ) compile build
 
 all: $(NAME)
 
 re: fclean $(NAME)
 
-build: $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+build: $(MANDATORY_OBJ)
+	ar rcs $(NAME) $(MANDATORY_OBJ)
+
+build-bonus: $(ALL_OBJ)
+	ar rcs $(NAME) $(ALL_OBJ)
 
 compile:
-	gcc $(CFLAGS) -c $(SRC)
+	gcc $(CFLAGS) -c $(MANDATORY_SRC)
 
-compile-no-flags:
-	gcc -c $(SRC)
+compile-bonus:
+	gcc $(CFLAGS) -c $(ALL_SRC)
 
-clean: $(OBJ)
-	rm -f $(OBJ)
+clean:
+	rm -f *.o
 
 fclean: clean
 	rm -f $(NAME)
@@ -28,5 +36,13 @@ fclean: clean
 norminette:
 	norminette -R CheckForbiddenSourceHeader | grep Error
 
-test:
-	echo "No test defined"
+bonus: $(ALL_OBJ) compile-bonus build-bonus
+
+testme:
+	rm -f .a.out
+	rm -f $(ALL_OBJ)
+	rm -f $(NAME)
+	gcc -g $(ALL_SRC)
+
+# .PHONY: test all clean fclean re bonus
+
