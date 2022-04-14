@@ -6,7 +6,7 @@
 /*   By: manu <manu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 17:03:16 by manugarc          #+#    #+#             */
-/*   Updated: 2022/04/11 20:27:31 by manu             ###   ########.fr       */
+/*   Updated: 2022/04/14 18:42:24 by manu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,12 @@
 static char	*get_trimmed(char const *s, char c)
 {
 	char	set[2];
-	char	*trimmed;
 
+	if (!s)
+		return (NULL);
 	set[0] = c;
 	set[1] = '\0';
-	trimmed = ft_strtrim(s, set);
-	if (ft_strlen(trimmed) == 0)
-		return (NULL);
-	return (trimmed);
+	return (ft_strtrim(s, set));
 }
 
 static int	count_delimiter(const char	*s, char c)
