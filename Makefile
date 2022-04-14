@@ -9,23 +9,17 @@ ALL_OBJ = $(ALL_SRC:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror
 
-$(NAME): $(MANDATORY_OBJ) compile build
+CC = gcc
 
 all: $(NAME)
 
-re: fclean $(NAME)
+%.o:	%.c
+		$(CC) -c $(FLAGS) $^
 
-build: $(MANDATORY_OBJ)
+$(NAME): $(MANDATORY_OBJ)
 	ar rcs $(NAME) $(MANDATORY_OBJ)
 
-build-bonus: $(ALL_OBJ)
-	ar rcs $(NAME) $(ALL_OBJ)
-
-compile:
-	gcc $(CFLAGS) -c $(MANDATORY_SRC)
-
-compile-bonus:
-	gcc $(CFLAGS) -c $(ALL_SRC)
+re: fclean $(NAME)
 
 clean:
 	rm -f *.o
@@ -36,7 +30,8 @@ fclean: clean
 norminette:
 	norminette -R CheckForbiddenSourceHeader | grep Error
 
-bonus: $(ALL_OBJ) compile-bonus build-bonus
+bonus: $(ALL_OBJ)
+	ar rcs $(NAME) $(ALL_OBJ)
 
 testme:
 	rm -f .a.out
@@ -44,5 +39,5 @@ testme:
 	rm -f $(NAME)
 	gcc -g $(ALL_SRC)
 
-# .PHONY: test all clean fclean re bonus
+.PHONY: all clean fclean re bonus
 
